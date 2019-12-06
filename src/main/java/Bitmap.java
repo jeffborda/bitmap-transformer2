@@ -17,6 +17,18 @@ public class Bitmap {
         this.bmpData = ImageIO.read(bmpInputPath.toFile());
     }
 
+    public void flipHorizontally() {
+
+    }
+
+    public void flipVertically() {
+
+    }
+
+    public void addRedBorder() {
+
+    }
+
     public void save() throws IOException {
 
         // RE: https://blog.idrsolutions.com/2018/08/how-to-write-out-bmp-images-in-java/
