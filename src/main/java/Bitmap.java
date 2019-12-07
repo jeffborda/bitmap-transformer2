@@ -19,20 +19,32 @@ public class Bitmap {
 
     public void flipVertically() {
 
-        int height = bmpData.getHeight() - 1;
+        int height = bmpData.getHeight();
         int width = bmpData.getWidth();
 
         for(int x = 0; x < width; x++) {
             for(int y = 0; y < height / 2; y++) {
                 int topColor = bmpData.getRGB(x, y);
-                int bottomColor = bmpData.getRGB(x, height - y);
+                int bottomColor = bmpData.getRGB(x, height - 1 - y);
                 bmpData.setRGB(x, y, bottomColor);
-                bmpData.setRGB(x, height - y, topColor);
+                bmpData.setRGB(x, height - 1 - y, topColor);
             }
         }
     }
 
     public void flipHorizontally() {
+
+        int height = bmpData.getHeight();
+        int width = bmpData.getWidth();
+
+        for(int x = 0; x < width / 2; x++) {
+            for(int y = 0; y < height; y++) {
+                int leftColor = bmpData.getRGB(x, y);
+                int rightColor = bmpData.getRGB(width - 1 - x, y);
+                bmpData.setRGB(x, y, rightColor);
+                bmpData.setRGB(width - 1 - x, y, leftColor);
+            }
+        }
 
     }
 
