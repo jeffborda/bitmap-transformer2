@@ -17,11 +17,22 @@ public class Bitmap {
         this.bmpData = ImageIO.read(bmpInputPath.toFile());
     }
 
-    public void flipHorizontally() {
+    public void flipVertically() {
 
+        int height = bmpData.getHeight() - 1;
+        int width = bmpData.getWidth();
+
+        for(int x = 0; x < width; x++) {
+            for(int y = 0; y < height / 2; y++) {
+                int topColor = bmpData.getRGB(x, y);
+                int bottomColor = bmpData.getRGB(x, height - y);
+                bmpData.setRGB(x, y, bottomColor);
+                bmpData.setRGB(x, height - y, topColor);
+            }
+        }
     }
 
-    public void flipVertically() {
+    public void flipHorizontally() {
 
     }
 
