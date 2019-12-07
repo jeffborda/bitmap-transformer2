@@ -1,4 +1,5 @@
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.nio.file.Path;
@@ -45,11 +46,21 @@ public class Bitmap {
                 bmpData.setRGB(width - 1 - x, y, leftColor);
             }
         }
-
     }
 
     public void addRedBorder() {
 
+        int height = bmpData.getHeight();
+        int width = bmpData.getWidth();
+        int borderWidth = 5;
+
+        for(int x = 0; x < width; x++) {
+            for(int y = 0; y < height; y++) {
+                if(y < borderWidth || y + borderWidth >= height || x < borderWidth || x + borderWidth >= width) {
+                    this.bmpData.setRGB(x, y, Color.red.getRGB());
+                }
+            }
+        }
     }
 
     public void save() throws IOException {
